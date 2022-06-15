@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "142739564407",
+    "project_id": "alang-world",
+    "storage_bucket": "alang-world.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:142739564407:android:e602807b3fbafad74e6372",
+        "android_client_info": {
+          "package_name": "com.alangworld.alang_world_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "142739564407-7td7p7phe2rta8m7e7cipob2djo4ii77.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5K8Tuc-KNhGm5ulc-m0NQ2NY79byt_bs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "142739564407-7td7p7phe2rta8m7e7cipob2djo4ii77.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

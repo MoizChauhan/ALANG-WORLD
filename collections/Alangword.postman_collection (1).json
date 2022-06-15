@@ -1,0 +1,405 @@
+{
+	"info": {
+		"_postman_id": "30ab5e74-23fb-4d56-8412-a61568b5eaf4",
+		"name": "Alangword",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiOGVjMzcyMWIzYTM0YmU2YmJjMjA1N2I3ZDljZmE4OTlkZmM0MDI5MDc5YjI0YWVhZTYyZGMwYzU5MmNlM2YzZTgwY2RhNzVlOGNmNjQ5NTgiLCJpYXQiOjE2NDc4OTIxNzkuNTMzMzQ0LCJuYmYiOjE2NDc4OTIxNzkuNTMzMzUyLCJleHAiOjE2Nzk0MjgxNzkuNTAwODg0LCJzdWIiOiIxNyIsInNjb3BlcyI6W119.SMR0tmjHjwVx12R_RMXUB0avfeRCl0gFDQZNmaaizJuCzVepjFDG9fRabo8JvxBbMoveuvB6jWZ1Nn-y7Rivm6ciZh_tnoKulMOmg8zF4uhPUxDyPADk_JObboDzOxUqH_ceL7BvqhGj3DXJj__MW9bO3qAu6lHcO4lsHFxP74iXY3pPc9_pBgWjMv8XEFfG2UxklR_JOHWC97P1ceUq0l_rpYixYweccHQwTrl3dk3qys04VSLSIkQ9g4iR1SBDROBlVWosSRau1NTBKOjnlDxr5FNCo6k591rty30LzDX1Rz4ejQDQojtTzC9Z1CUXSJqcBDrzZbO8y1lHW-ZRhb5jwb3-35shKkgQOnReAagq-hw94y8Mn874Vwnr8cPNc7xdT4m-FbpLAJOpaw6pUypF3z8hY7fUDglHn2SOcnfR07t0_sc223F96ImLQXI6KdBSDINcgm6GEP56x-mys2u3-6niBykuYedfJxBC-hcnWtQAjB38X6znO7k4V0jstUDFIUESk1uQYl4Ya1oJNQStt_5Q1Nr0FYm7Sw2i3F4_XtFBs_FbgHaxXaqFNQAYTsWRxMJpE0hXhXtKXZSf7u4E94tON2elvE3oUzx5X6v88pF9CyOkUjO-HTXeB057XWtZFeD4aRvcnWyZ7q55twGc9wpASQtCwPSVp3cleTk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/alangworld/api/get_product/18",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"alangworld",
+						"api",
+						"get_product",
+						"18"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiOGVjMzcyMWIzYTM0YmU2YmJjMjA1N2I3ZDljZmE4OTlkZmM0MDI5MDc5YjI0YWVhZTYyZGMwYzU5MmNlM2YzZTgwY2RhNzVlOGNmNjQ5NTgiLCJpYXQiOjE2NDc4OTIxNzkuNTMzMzQ0LCJuYmYiOjE2NDc4OTIxNzkuNTMzMzUyLCJleHAiOjE2Nzk0MjgxNzkuNTAwODg0LCJzdWIiOiIxNyIsInNjb3BlcyI6W119.SMR0tmjHjwVx12R_RMXUB0avfeRCl0gFDQZNmaaizJuCzVepjFDG9fRabo8JvxBbMoveuvB6jWZ1Nn-y7Rivm6ciZh_tnoKulMOmg8zF4uhPUxDyPADk_JObboDzOxUqH_ceL7BvqhGj3DXJj__MW9bO3qAu6lHcO4lsHFxP74iXY3pPc9_pBgWjMv8XEFfG2UxklR_JOHWC97P1ceUq0l_rpYixYweccHQwTrl3dk3qys04VSLSIkQ9g4iR1SBDROBlVWosSRau1NTBKOjnlDxr5FNCo6k591rty30LzDX1Rz4ejQDQojtTzC9Z1CUXSJqcBDrzZbO8y1lHW-ZRhb5jwb3-35shKkgQOnReAagq-hw94y8Mn874Vwnr8cPNc7xdT4m-FbpLAJOpaw6pUypF3z8hY7fUDglHn2SOcnfR07t0_sc223F96ImLQXI6KdBSDINcgm6GEP56x-mys2u3-6niBykuYedfJxBC-hcnWtQAjB38X6znO7k4V0jstUDFIUESk1uQYl4Ya1oJNQStt_5Q1Nr0FYm7Sw2i3F4_XtFBs_FbgHaxXaqFNQAYTsWRxMJpE0hXhXtKXZSf7u4E94tON2elvE3oUzx5X6v88pF9CyOkUjO-HTXeB057XWtZFeD4aRvcnWyZ7q55twGc9wpASQtCwPSVp3cleTk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/alangworld/api/delete_product/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"alangworld",
+						"api",
+						"delete_product",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiOGVjMzcyMWIzYTM0YmU2YmJjMjA1N2I3ZDljZmE4OTlkZmM0MDI5MDc5YjI0YWVhZTYyZGMwYzU5MmNlM2YzZTgwY2RhNzVlOGNmNjQ5NTgiLCJpYXQiOjE2NDc4OTIxNzkuNTMzMzQ0LCJuYmYiOjE2NDc4OTIxNzkuNTMzMzUyLCJleHAiOjE2Nzk0MjgxNzkuNTAwODg0LCJzdWIiOiIxNyIsInNjb3BlcyI6W119.SMR0tmjHjwVx12R_RMXUB0avfeRCl0gFDQZNmaaizJuCzVepjFDG9fRabo8JvxBbMoveuvB6jWZ1Nn-y7Rivm6ciZh_tnoKulMOmg8zF4uhPUxDyPADk_JObboDzOxUqH_ceL7BvqhGj3DXJj__MW9bO3qAu6lHcO4lsHFxP74iXY3pPc9_pBgWjMv8XEFfG2UxklR_JOHWC97P1ceUq0l_rpYixYweccHQwTrl3dk3qys04VSLSIkQ9g4iR1SBDROBlVWosSRau1NTBKOjnlDxr5FNCo6k591rty30LzDX1Rz4ejQDQojtTzC9Z1CUXSJqcBDrzZbO8y1lHW-ZRhb5jwb3-35shKkgQOnReAagq-hw94y8Mn874Vwnr8cPNc7xdT4m-FbpLAJOpaw6pUypF3z8hY7fUDglHn2SOcnfR07t0_sc223F96ImLQXI6KdBSDINcgm6GEP56x-mys2u3-6niBykuYedfJxBC-hcnWtQAjB38X6znO7k4V0jstUDFIUESk1uQYl4Ya1oJNQStt_5Q1Nr0FYm7Sw2i3F4_XtFBs_FbgHaxXaqFNQAYTsWRxMJpE0hXhXtKXZSf7u4E94tON2elvE3oUzx5X6v88pF9CyOkUjO-HTXeB057XWtZFeD4aRvcnWyZ7q55twGc9wpASQtCwPSVp3cleTk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "seller_id",
+							"value": "29",
+							"type": "text"
+						},
+						{
+							"key": "product_name",
+							"value": "Demo ttre",
+							"type": "text"
+						},
+						{
+							"key": "catagory_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "image3",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "image4",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "image5",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "image6",
+							"type": "file",
+							"src": "/home/kick/Downloads/demoimage/di03.jpeg"
+						},
+						{
+							"key": "image1",
+							"type": "file",
+							"src": "/home/kick/Downloads/demoimage/di01.jpeg"
+						},
+						{
+							"key": "image2",
+							"type": "file",
+							"src": []
+						},
+						{
+							"key": "id",
+							"value": "2",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/alangworld/api/edit_product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"alangworld",
+						"api",
+						"edit_product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiOGVjMzcyMWIzYTM0YmU2YmJjMjA1N2I3ZDljZmE4OTlkZmM0MDI5MDc5YjI0YWVhZTYyZGMwYzU5MmNlM2YzZTgwY2RhNzVlOGNmNjQ5NTgiLCJpYXQiOjE2NDc4OTIxNzkuNTMzMzQ0LCJuYmYiOjE2NDc4OTIxNzkuNTMzMzUyLCJleHAiOjE2Nzk0MjgxNzkuNTAwODg0LCJzdWIiOiIxNyIsInNjb3BlcyI6W119.SMR0tmjHjwVx12R_RMXUB0avfeRCl0gFDQZNmaaizJuCzVepjFDG9fRabo8JvxBbMoveuvB6jWZ1Nn-y7Rivm6ciZh_tnoKulMOmg8zF4uhPUxDyPADk_JObboDzOxUqH_ceL7BvqhGj3DXJj__MW9bO3qAu6lHcO4lsHFxP74iXY3pPc9_pBgWjMv8XEFfG2UxklR_JOHWC97P1ceUq0l_rpYixYweccHQwTrl3dk3qys04VSLSIkQ9g4iR1SBDROBlVWosSRau1NTBKOjnlDxr5FNCo6k591rty30LzDX1Rz4ejQDQojtTzC9Z1CUXSJqcBDrzZbO8y1lHW-ZRhb5jwb3-35shKkgQOnReAagq-hw94y8Mn874Vwnr8cPNc7xdT4m-FbpLAJOpaw6pUypF3z8hY7fUDglHn2SOcnfR07t0_sc223F96ImLQXI6KdBSDINcgm6GEP56x-mys2u3-6niBykuYedfJxBC-hcnWtQAjB38X6znO7k4V0jstUDFIUESk1uQYl4Ya1oJNQStt_5Q1Nr0FYm7Sw2i3F4_XtFBs_FbgHaxXaqFNQAYTsWRxMJpE0hXhXtKXZSf7u4E94tON2elvE3oUzx5X6v88pF9CyOkUjO-HTXeB057XWtZFeD4aRvcnWyZ7q55twGc9wpASQtCwPSVp3cleTk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "seller_id",
+							"value": "18",
+							"type": "text"
+						},
+						{
+							"key": "product_name",
+							"value": "Demo two",
+							"type": "text"
+						},
+						{
+							"key": "catagory_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "image3",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "image4",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "image5",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "image6",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "image1",
+							"type": "file",
+							"src": "/home/kick/Downloads/demoimage/di01.jpeg"
+						},
+						{
+							"key": "image2",
+							"type": "file",
+							"src": "/home/kick/Downloads/demoimage/di01.jpeg"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost/alangworld/api/add_product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"alangworld",
+						"api",
+						"add_product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product Category",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiOGVjMzcyMWIzYTM0YmU2YmJjMjA1N2I3ZDljZmE4OTlkZmM0MDI5MDc5YjI0YWVhZTYyZGMwYzU5MmNlM2YzZTgwY2RhNzVlOGNmNjQ5NTgiLCJpYXQiOjE2NDc4OTIxNzkuNTMzMzQ0LCJuYmYiOjE2NDc4OTIxNzkuNTMzMzUyLCJleHAiOjE2Nzk0MjgxNzkuNTAwODg0LCJzdWIiOiIxNyIsInNjb3BlcyI6W119.SMR0tmjHjwVx12R_RMXUB0avfeRCl0gFDQZNmaaizJuCzVepjFDG9fRabo8JvxBbMoveuvB6jWZ1Nn-y7Rivm6ciZh_tnoKulMOmg8zF4uhPUxDyPADk_JObboDzOxUqH_ceL7BvqhGj3DXJj__MW9bO3qAu6lHcO4lsHFxP74iXY3pPc9_pBgWjMv8XEFfG2UxklR_JOHWC97P1ceUq0l_rpYixYweccHQwTrl3dk3qys04VSLSIkQ9g4iR1SBDROBlVWosSRau1NTBKOjnlDxr5FNCo6k591rty30LzDX1Rz4ejQDQojtTzC9Z1CUXSJqcBDrzZbO8y1lHW-ZRhb5jwb3-35shKkgQOnReAagq-hw94y8Mn874Vwnr8cPNc7xdT4m-FbpLAJOpaw6pUypF3z8hY7fUDglHn2SOcnfR07t0_sc223F96ImLQXI6KdBSDINcgm6GEP56x-mys2u3-6niBykuYedfJxBC-hcnWtQAjB38X6znO7k4V0jstUDFIUESk1uQYl4Ya1oJNQStt_5Q1Nr0FYm7Sw2i3F4_XtFBs_FbgHaxXaqFNQAYTsWRxMJpE0hXhXtKXZSf7u4E94tON2elvE3oUzx5X6v88pF9CyOkUjO-HTXeB057XWtZFeD4aRvcnWyZ7q55twGc9wpASQtCwPSVp3cleTk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/alangworld/api/get_productcategory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"alangworld",
+						"api",
+						"get_productcategory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Plan Details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiOGVjMzcyMWIzYTM0YmU2YmJjMjA1N2I3ZDljZmE4OTlkZmM0MDI5MDc5YjI0YWVhZTYyZGMwYzU5MmNlM2YzZTgwY2RhNzVlOGNmNjQ5NTgiLCJpYXQiOjE2NDc4OTIxNzkuNTMzMzQ0LCJuYmYiOjE2NDc4OTIxNzkuNTMzMzUyLCJleHAiOjE2Nzk0MjgxNzkuNTAwODg0LCJzdWIiOiIxNyIsInNjb3BlcyI6W119.SMR0tmjHjwVx12R_RMXUB0avfeRCl0gFDQZNmaaizJuCzVepjFDG9fRabo8JvxBbMoveuvB6jWZ1Nn-y7Rivm6ciZh_tnoKulMOmg8zF4uhPUxDyPADk_JObboDzOxUqH_ceL7BvqhGj3DXJj__MW9bO3qAu6lHcO4lsHFxP74iXY3pPc9_pBgWjMv8XEFfG2UxklR_JOHWC97P1ceUq0l_rpYixYweccHQwTrl3dk3qys04VSLSIkQ9g4iR1SBDROBlVWosSRau1NTBKOjnlDxr5FNCo6k591rty30LzDX1Rz4ejQDQojtTzC9Z1CUXSJqcBDrzZbO8y1lHW-ZRhb5jwb3-35shKkgQOnReAagq-hw94y8Mn874Vwnr8cPNc7xdT4m-FbpLAJOpaw6pUypF3z8hY7fUDglHn2SOcnfR07t0_sc223F96ImLQXI6KdBSDINcgm6GEP56x-mys2u3-6niBykuYedfJxBC-hcnWtQAjB38X6znO7k4V0jstUDFIUESk1uQYl4Ya1oJNQStt_5Q1Nr0FYm7Sw2i3F4_XtFBs_FbgHaxXaqFNQAYTsWRxMJpE0hXhXtKXZSf7u4E94tON2elvE3oUzx5X6v88pF9CyOkUjO-HTXeB057XWtZFeD4aRvcnWyZ7q55twGc9wpASQtCwPSVp3cleTk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/alangworld/api/get_plan_details/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"alangworld",
+						"api",
+						"get_plan_details",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiOGVjMzcyMWIzYTM0YmU2YmJjMjA1N2I3ZDljZmE4OTlkZmM0MDI5MDc5YjI0YWVhZTYyZGMwYzU5MmNlM2YzZTgwY2RhNzVlOGNmNjQ5NTgiLCJpYXQiOjE2NDc4OTIxNzkuNTMzMzQ0LCJuYmYiOjE2NDc4OTIxNzkuNTMzMzUyLCJleHAiOjE2Nzk0MjgxNzkuNTAwODg0LCJzdWIiOiIxNyIsInNjb3BlcyI6W119.SMR0tmjHjwVx12R_RMXUB0avfeRCl0gFDQZNmaaizJuCzVepjFDG9fRabo8JvxBbMoveuvB6jWZ1Nn-y7Rivm6ciZh_tnoKulMOmg8zF4uhPUxDyPADk_JObboDzOxUqH_ceL7BvqhGj3DXJj__MW9bO3qAu6lHcO4lsHFxP74iXY3pPc9_pBgWjMv8XEFfG2UxklR_JOHWC97P1ceUq0l_rpYixYweccHQwTrl3dk3qys04VSLSIkQ9g4iR1SBDROBlVWosSRau1NTBKOjnlDxr5FNCo6k591rty30LzDX1Rz4ejQDQojtTzC9Z1CUXSJqcBDrzZbO8y1lHW-ZRhb5jwb3-35shKkgQOnReAagq-hw94y8Mn874Vwnr8cPNc7xdT4m-FbpLAJOpaw6pUypF3z8hY7fUDglHn2SOcnfR07t0_sc223F96ImLQXI6KdBSDINcgm6GEP56x-mys2u3-6niBykuYedfJxBC-hcnWtQAjB38X6znO7k4V0jstUDFIUESk1uQYl4Ya1oJNQStt_5Q1Nr0FYm7Sw2i3F4_XtFBs_FbgHaxXaqFNQAYTsWRxMJpE0hXhXtKXZSf7u4E94tON2elvE3oUzx5X6v88pF9CyOkUjO-HTXeB057XWtZFeD4aRvcnWyZ7q55twGc9wpASQtCwPSVp3cleTk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/alangworld/api/user_profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"alangworld",
+						"api",
+						"user_profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Plan",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiOGVjMzcyMWIzYTM0YmU2YmJjMjA1N2I3ZDljZmE4OTlkZmM0MDI5MDc5YjI0YWVhZTYyZGMwYzU5MmNlM2YzZTgwY2RhNzVlOGNmNjQ5NTgiLCJpYXQiOjE2NDc4OTIxNzkuNTMzMzQ0LCJuYmYiOjE2NDc4OTIxNzkuNTMzMzUyLCJleHAiOjE2Nzk0MjgxNzkuNTAwODg0LCJzdWIiOiIxNyIsInNjb3BlcyI6W119.SMR0tmjHjwVx12R_RMXUB0avfeRCl0gFDQZNmaaizJuCzVepjFDG9fRabo8JvxBbMoveuvB6jWZ1Nn-y7Rivm6ciZh_tnoKulMOmg8zF4uhPUxDyPADk_JObboDzOxUqH_ceL7BvqhGj3DXJj__MW9bO3qAu6lHcO4lsHFxP74iXY3pPc9_pBgWjMv8XEFfG2UxklR_JOHWC97P1ceUq0l_rpYixYweccHQwTrl3dk3qys04VSLSIkQ9g4iR1SBDROBlVWosSRau1NTBKOjnlDxr5FNCo6k591rty30LzDX1Rz4ejQDQojtTzC9Z1CUXSJqcBDrzZbO8y1lHW-ZRhb5jwb3-35shKkgQOnReAagq-hw94y8Mn874Vwnr8cPNc7xdT4m-FbpLAJOpaw6pUypF3z8hY7fUDglHn2SOcnfR07t0_sc223F96ImLQXI6KdBSDINcgm6GEP56x-mys2u3-6niBykuYedfJxBC-hcnWtQAjB38X6znO7k4V0jstUDFIUESk1uQYl4Ya1oJNQStt_5Q1Nr0FYm7Sw2i3F4_XtFBs_FbgHaxXaqFNQAYTsWRxMJpE0hXhXtKXZSf7u4E94tON2elvE3oUzx5X6v88pF9CyOkUjO-HTXeB057XWtZFeD4aRvcnWyZ7q55twGc9wpASQtCwPSVp3cleTk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/alangworld/api/user_plan",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"alangworld",
+						"api",
+						"user_plan"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
