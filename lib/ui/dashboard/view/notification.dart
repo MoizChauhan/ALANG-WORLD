@@ -3,14 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:provider/provider.dart';
-import 'package:sb_portal/ui/dashboard/model/NotificationData.dart'
-    as notification;
+import 'package:sb_portal/ui/dashboard/model/NotificationData.dart' as notification;
 import 'package:sb_portal/ui/dashboard/view/buyer/BuyerSideMenu.dart';
 import 'package:sb_portal/ui/dashboard/view/widgets/SideMenu.dart';
 import 'package:sb_portal/utils/app_colors.dart';
 import 'package:sb_portal/utils/app_images.dart';
 import 'package:sb_portal/utils/preference_helper.dart';
-
+import 'package:flutter_html/flutter_html.dart';
 import '../../../utils/app_string.dart';
 import '../../auth/model/CommonModel.dart';
 import '../model/NotificationData.dart';
@@ -41,9 +40,7 @@ class _NotificationPageState extends State<NotificationPage> {
       child: ModalProgressHUD(
         inAsyncCall: mHomeProvider!.isRequestSend,
         child: Scaffold(
-          drawer: PreferenceHelper.getBool(PreferenceHelper.IS_SELLER_SIGN_IN)
-              ? SideMenu()
-              : const BuyerSideMenu(),
+          drawer: PreferenceHelper.getBool(PreferenceHelper.IS_SELLER_SIGN_IN) ? SideMenu() : const BuyerSideMenu(),
           appBar: AppBar(
             toolbarHeight: 80,
             foregroundColor: Colors.black,
@@ -113,9 +110,7 @@ class _NotificationPageState extends State<NotificationPage> {
   _itemNotificationList(int index) {
     return Theme(
       data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-
       child: ExpansionTile(
-      
         onExpansionChanged: (bool isExpand) {
           if (isExpand) {
             /*setState(() {
@@ -128,16 +123,13 @@ class _NotificationPageState extends State<NotificationPage> {
           }
         },
         title: Container(
-          
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
           decoration: BoxDecoration(
-            color: notificationsList[index].isRead == "1"
-                ? AppColors.colorLightBlueGrey
-                : AppColors.colorDarkBlueGrey,
+            color: notificationsList[index].isRead == "1" ? AppColors.colorLightBlueGrey : AppColors.colorDarkBlueGrey,
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(
-           notificationsList[index].notificationTitle!,
+            notificationsList[index].notificationTitle!,
             style: const TextStyle(
               color: AppColors.colorBlack,
               fontWeight: FontWeight.w500,
@@ -152,17 +144,19 @@ class _NotificationPageState extends State<NotificationPage> {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             width: double.infinity,
             decoration: BoxDecoration(
-                color: notificationsList[index].isRead == "1"
-                    ? AppColors.colorLightBlueGrey
-                    : AppColors.colorDarkBlueGrey,
+                color: notificationsList[index].isRead == "1" ? AppColors.colorLightBlueGrey : AppColors.colorDarkBlueGrey,
                 borderRadius: BorderRadius.circular(8)),
-            child: Text(
-              notificationsList[index].notificationData!,
-              style: const TextStyle(
-                  color: AppColors.colorBlack,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: "RobotRegular",
-                  fontSize: 15),
+            child: Html(
+              data: notificationsList[index].notificationData!,
+
+              // child: Text(
+              // notificationsList[index].notificationData!,
+              //   style: const TextStyle(
+              //       color: AppColors.colorBlack,
+              //       fontWeight: FontWeight.w500,
+              //       fontFamily: "RobotRegular",
+              //       fontSize: 15),
+              // ),
             ),
           ),
         ],
@@ -172,8 +166,7 @@ class _NotificationPageState extends State<NotificationPage> {
 
   callNotificationListApi(bool isRequestSend) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile ||
-        connectivityResult == ConnectivityResult.wifi) {
+    if (connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.wifi) {
       mHomeProvider!.getNotification(isRequestSend).then((value) {
         if (value != null) {
           try {
@@ -182,8 +175,7 @@ class _NotificationPageState extends State<NotificationPage> {
               Fluttertoast.showToast(msg: streams.message!);
             } else {
               notificationData = NotificationData.fromJson(value);
-              notificationsList =
-                  notificationData!.results!.notifications!.reversed.toList();
+              notificationsList = notificationData!.results!.notifications!.reversed.toList();
             }
           } catch (ex) {
             print(ex);
@@ -200,8 +192,7 @@ class _NotificationPageState extends State<NotificationPage> {
 
   callReadNotificationApi(int notificationId) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile ||
-        connectivityResult == ConnectivityResult.wifi) {
+    if (connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.wifi) {
       mHomeProvider!.readNotification(notificationId).then((value) {
         if (value != null) {
           try {

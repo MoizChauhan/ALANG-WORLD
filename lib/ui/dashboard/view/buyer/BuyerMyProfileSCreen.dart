@@ -356,7 +356,7 @@ class _BuyerMyProfileScreenState extends State<BuyerMyProfileScreen> {
                                     color: AppColors.colorOrange,
                                     child: Container(
                                       alignment: Alignment.center,
-                                      // height: 30,
+                                      height: 30,
                                       // width: 205,
                                       child: MaterialButton(
                                         onPressed: null,

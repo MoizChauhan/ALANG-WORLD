@@ -388,7 +388,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                                   color: AppColors.colorOrange,
                                   child: Container(
                                     alignment: Alignment.center,
-                                    // height: 30,
+                                    height: 30,
                                     // width: 205,
                                     child: const MaterialButton(
                                         onPressed: null,

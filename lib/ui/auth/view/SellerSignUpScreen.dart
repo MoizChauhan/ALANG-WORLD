@@ -473,7 +473,7 @@ class _SellerSignUpScreenState extends State<SellerSignUpScreen> {
                                 TextSpan(
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
-                                      launchUrl(Uri.parse("https://alangworld.com/terms_and_conditions"));
+                                      launchUrl(Uri.parse("https://alangworld.com/terms_and_conditions?type=seller"));
                                     },
                                   text: 'Terms & Condition',
                                   style: TextStyle(

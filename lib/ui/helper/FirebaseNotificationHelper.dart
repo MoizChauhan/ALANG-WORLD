@@ -108,7 +108,7 @@ class FirebaseNotificationHelper {
   void checkAppState() {
     appStatus = 0;
 
-    WidgetsBinding.instance!.addObserver(LifecycleEventHandler(resumeCallBack: () async {
+    WidgetsBinding.instance.addObserver(LifecycleEventHandler(resumeCallBack: () async {
       appStatus = 0;
       // return ;
     }, pausedCallBack: () async {
@@ -155,7 +155,7 @@ class FirebaseNotificationHelper {
     flutterLocalNotificationsPlugin.show(
       remoteNotification.hashCode,
       remoteNotification!.title,
-      remoteNotification.body,
+      remoteNotification.body!.replaceAll('<br>', "\n"),
       notificationDetails,
       payload: json.encode(data),
     );

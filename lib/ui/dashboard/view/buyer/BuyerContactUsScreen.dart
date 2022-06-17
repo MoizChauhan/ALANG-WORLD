@@ -88,8 +88,7 @@ class _BuyerContactUsScreenState extends State<BuyerContactUsScreen> {
                   onTap: () {
                     _openUrl('mailto:${'info@alangworld.com'}');
                   },
-                  child: Text('info@alangworld.com',
-                      style: AppFont.NUNITO_BOLD_BLACK_16),
+                  child: Text('info@alangworld.com', style: AppFont.NUNITO_BOLD_BLACK_16),
                 ),
               ],
             ),
@@ -105,10 +104,15 @@ class _BuyerContactUsScreenState extends State<BuyerContactUsScreen> {
                   onTap: () {
                     _openUrl('tel:${'+919510264074'}');
                   },
-                  child: Text('+91 9510264074',
-                      style: AppFont.NUNITO_BOLD_BLACK_16),
+                  child: Text('+91 9510264074', style: AppFont.NUNITO_BOLD_BLACK_16),
                 ),
               ],
+            ),
+            const SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Text("© Copyright 2022 Alang World Use of this App signifies your acceptance of Alang World’s Terms of Use.",
+                  textAlign: TextAlign.center, style: AppFont.NUNITO_BOLD_BLACK_16),
             ),
             const SizedBox(height: 64),
             //Text('Copyright Line/Web URL', style: AppFont.NUNITO_REGULAR_DARK_BLACK_16)
