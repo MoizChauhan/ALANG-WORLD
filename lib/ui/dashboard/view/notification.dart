@@ -175,7 +175,7 @@ class _NotificationPageState extends State<NotificationPage> {
               Fluttertoast.showToast(msg: streams.message!);
             } else {
               notificationData = NotificationData.fromJson(value);
-              notificationsList = notificationData!.results!.notifications!.reversed.toList();
+              notificationsList = notificationData!.results!.notifications!.toList();
             }
           } catch (ex) {
             print(ex);

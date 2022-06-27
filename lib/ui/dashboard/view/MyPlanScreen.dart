@@ -358,31 +358,34 @@ class _MyPlanScreenState extends State<MyPlanScreen> {
                                 onTap: () {},
                               ),
                             ),
-                            const SizedBox(height: 10),*/
-                            // Align(
-                            //   alignment: Alignment.center,
-                            //   child: GestureDetector(
-                            //     child: Material(
-                            //       elevation: 0.0,
-                            //       borderRadius: BorderRadius.circular(8),
-                            //       color: AppColors.colorOrange,
-                            //       child: Container(
-                            //         alignment: Alignment.center,
-                            //         height: 30,
-                            //         width: 230,
-                            //         child: MaterialButton(
-                            //           onPressed: null,
-                            //           child: Text(
-                            //             'UPGRADE PLAN',
-                            //             style: AppFont
-                            //                 .NUNITO_REGULAR_WHITE_BOLD_16,
-                            //           ),
-                            //         ),
-                            //       ),
-                            //     ),
-                            //     onTap: () {},
-                            //   ),
-                            // ),
+                            */
+                            const SizedBox(height: 10),
+                            Align(
+                              alignment: Alignment.center,
+                              child: GestureDetector(
+                                child: Material(
+                                  elevation: 0.0,
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: AppColors.colorOrange,
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    height: 30,
+                                    width: 230,
+                                    child: MaterialButton(
+                                      onPressed: null,
+                                      child: Text(
+                                        'UPGRADE PLAN',
+                                        style: AppFont
+                                            .NUNITO_REGULAR_WHITE_BOLD_16,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                onTap: () {
+                                  callMyPlan();
+                                },
+                              ),
+                            ),
                             const SizedBox(height: 32),
                           ],
                         ),

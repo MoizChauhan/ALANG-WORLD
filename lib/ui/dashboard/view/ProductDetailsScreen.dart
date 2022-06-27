@@ -442,7 +442,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             if (streams.response != null && streams.response == "error") {
               Fluttertoast.showToast(msg: streams.message);
             } else {
-              Fluttertoast.showToast(msg: streams.message);
+              // Fluttertoast.showToast(msg: streams.message);
             }
           } catch (ex) {
             print(ex);

@@ -3,6 +3,7 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:intl/intl.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:provider/provider.dart';
 import 'package:sb_portal/ui/auth/model/CommonModel.dart';
@@ -206,7 +207,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                                   const SizedBox(width: 12),
                                   Expanded(
                                     child: Text(
-                                      myProfileModel.results!.profile!.establishment_date!,
+                                      DateFormat('dd-MM-yyyy').format(DateTime.parse(myProfileModel.results!.profile!.establishment_date!)),
                                       style: const TextStyle(
                                         fontFamily: "InterMedium",
                                         fontSize: 13,

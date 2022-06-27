@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -116,7 +117,7 @@ class _WithOutLoginNavigationState extends State<WithOutLoginNavigation> {
                   child: Row(
                     children: [
                       Expanded(
-                        child: /*Align(
+                          child: /*Align(
                           alignment: Alignment.centerLeft,
                           child: IconButton(
                             color: Colors.black,
@@ -125,8 +126,8 @@ class _WithOutLoginNavigationState extends State<WithOutLoginNavigation> {
                               Scaffold.of(context).openDrawer();
                             },
                           ),
-                        ),*/Container()
-                      ),
+                        ),*/
+                              Container()),
                       Image.asset(
                         APPImages.icSplashLogo,
                         height: 65,
@@ -248,27 +249,45 @@ class _WithOutLoginNavigationState extends State<WithOutLoginNavigation> {
                                     const BorderRadius.all(Radius.circular(16)),
                               ),
                               child: (introSliderList.isNotEmpty)
-                                  ? Image.network(
-                                      introSliderList[_pos].image!,
-                                      width: MediaQuery.of(context).size.width *
-                                          90 /
-                                          100,
-                                      height: 204,
-                                      fit: BoxFit.fill,
-                                      errorBuilder: (BuildContext? context,
-                                          Object? exception,
-                                          StackTrace? stackTrace) {
-                                        return Image.asset(
-                                          APPImages.icError,
-                                          width: MediaQuery.of(context!)
-                                                  .size
-                                                  .width *
+                                  ? CachedNetworkImage(
+                                      imageUrl:
+                                          introSliderList[_pos].image!,
+                                      // progressIndicatorBuilder: (context, url,
+                                      //         downloadProgress) =>
+                                      //     Center(
+                                      //       child: CircularProgressIndicator(
+                                      //           value: downloadProgress.progress),
+                                      //     ),
+                                      errorWidget: (context, url, error) =>
+                                          const Icon(Icons.error),
+                                      width:
+                                          MediaQuery.of(context).size.width *
                                               90 /
                                               100,
-                                          height: 204,
-                                        );
-                                      },
+                                      height: 204,
                                     )
+
+                                  // Image.network(
+                                  //     introSliderList[_pos].image!,
+                                  //     width: MediaQuery.of(context).size.width *
+                                  //         90 /
+                                  //         100,
+                                  //     height: 204,
+                                  //     fit: BoxFit.fill,
+                                  //     errorBuilder: (BuildContext? context,
+                                  //         Object? exception,
+                                  //         StackTrace? stackTrace) {
+                                  //       return Image.asset(
+                                  //         APPImages.icError,
+                                  // width: MediaQuery.of(context!)
+                                  //         .size
+                                  //         .width *
+                                  //     90 /
+                                  //     100,
+                                  // height: 204,
+                                  //       );
+                                  //     },
+                                  //   )
                                   : Image.asset(
                                       APPImages.icError,
                                       width: MediaQuery.of(context).size.width *

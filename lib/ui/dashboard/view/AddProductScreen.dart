@@ -342,14 +342,17 @@ class _AddProductScreenState extends State<AddProductScreen> {
                     const SizedBox(
                       height: 24,
                     ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      child: Text(
-                        'We will Verify the product added by you in next 24 hours and the same will be uploaded under your products.',
-                        // 'Our Customer Support Executive Will\nVerify Your Product in next 24 Hours \nFor necessary Verification &\nOn Boarding...\'',
-                        strutStyle: StrutStyle(fontSize: AppFont.NUNITO_REGULAR_BLACK_14.fontSize),
-                        style: AppFont.NUNITO_REGULAR_BLACK_14,
-                        textAlign: TextAlign.center,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal:20.0),
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        child: Text(
+                          'We will Verify the product added by you in next 24 hours and the same will be uploaded under your products.',
+                          // 'Our Customer Support Executive Will\nVerify Your Product in next 24 Hours \nFor necessary Verification &\nOn Boarding...\'',
+                          strutStyle: StrutStyle(fontSize: AppFont.NUNITO_REGULAR_BLACK_14.fontSize),
+                          style: AppFont.NUNITO_REGULAR_BLACK_14,
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ),
                     const SizedBox(
