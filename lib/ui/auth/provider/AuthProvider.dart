@@ -97,11 +97,11 @@ class AuthProvider extends ChangeNotifier {
     });
   }
 
-  Future<Map<String, dynamic>> planList() {
+  Future<Map<String, dynamic>> planList(planId) {
     isRequestSend = true;
     notifyListeners();
     return api
-        .callGetMethodToken(mContext!, APPStrings.apiGetPlan)
+        .callGetMethodToken(mContext!,planId != null? "${APPStrings.apiGetPlan}?plan_id=$planId" : APPStrings.apiGetPlan )
         .then((value) {
       isRequestSend = false;
       notifyListeners();
@@ -186,7 +186,8 @@ class AuthProvider extends ChangeNotifier {
     isRequestSend = true;
     notifyListeners();
     return api
-        .callPostMethodWithToken(mContext!, APPStrings.apiChangePassword, params)
+        .callPostMethodWithToken(
+            mContext!, APPStrings.apiChangePassword, params)
         .then((value) {
       isRequestSend = false;
       notifyListeners();

@@ -226,23 +226,23 @@ class _SellerLoginState extends State<SellerLogin> {
   isValid() async {
     if (emailController.text.toString().trim().isEmpty) {
       Fluttertoast.showToast(msg: 'Please enter email/mobile');
-    } else if (passwordController.text.toString().trim().isEmpty) {
-      Fluttertoast.showToast(msg: 'Please enter confirm password');
-    } else if (!Validator().hasMinLength(passwordController.text.toString().trim(), 6)) {
-      Fluttertoast.showToast(msg: 'Please enter at least 6 character in confirm password');
-    } else if (!Validator().hasMinNormalChar(passwordController.text.toString().trim(), 1)) {
-      Fluttertoast.showToast(msg: 'Please enter at least 1 lower case letter in confirm password');
-    } /*else if (!Validator().hasMinUppercase(
-                          _confirmPasswordController.text.toString().trim(),
-                          1)) {
-                        Fluttertoast.showToast(
-                            msg:
-                                'Please enter at least 1 upper case letter in confirm password');
-                      }*/
-    else if (!Validator().hasMinNumericChar(passwordController.text.toString().trim(), 1)) {
-      Fluttertoast.showToast(msg: 'Please enter at least 1 number in confirm password');
-    } else if (!Validator().hasMinSpecialChar(passwordController.text.toString().trim(), 1)) {
-      Fluttertoast.showToast(msg: 'Please enter at least 1 non-alphanumeric symbol in confirm password');
+    } else if (emailController.text.trim().length <10) {
+      Fluttertoast.showToast(msg: 'Mobile Number must contain 10 digit');
+    // } else if (!Validator().hasMinLength(passwordController.text.toString().trim(), 6)) {
+    //   Fluttertoast.showToast(msg: 'Please enter at least 6 character in confirm password');
+    // } else if (!Validator().hasMinNormalChar(passwordController.text.toString().trim(), 1)) {
+    //   Fluttertoast.showToast(msg: 'Please enter at least 1 lower case letter in confirm password');
+    // } /*else if (!Validator().hasMinUppercase(
+    //                       _confirmPasswordController.text.toString().trim(),
+    //                       1)) {
+    //                     Fluttertoast.showToast(
+    //                         msg:
+    //                             'Please enter at least 1 upper case letter in confirm password');
+    //                   }*/
+    // else if (!Validator().hasMinNumericChar(passwordController.text.toString().trim(), 1)) {
+    //   Fluttertoast.showToast(msg: 'Please enter at least 1 number in confirm password');
+    // } else if (!Validator().hasMinSpecialChar(passwordController.text.toString().trim(), 1)) {
+    //   Fluttertoast.showToast(msg: 'Please enter at least 1 non-alphanumeric symbol in confirm password');
     } else {
       callSignInApi();
     }
@@ -306,7 +306,7 @@ class _SellerLoginState extends State<SellerLogin> {
                                 )),
                         (route) => false);
                   } else {
-                    NavKey.navKey.currentState!.pushAndRemoveUntil(MaterialPageRoute(builder: (_) => const SelectPlanScreen()), (route) => false);
+                    NavKey.navKey.currentState!.pushAndRemoveUntil(MaterialPageRoute(builder: (_) => const SelectPlanScreen(upgrade: false)), (route) => false);
                   }
                 } else {
                   PreferenceHelper.setBool(PreferenceHelper.IS_SELLER_SIGN_IN, false);

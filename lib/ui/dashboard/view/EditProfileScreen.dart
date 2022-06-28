@@ -73,8 +73,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     _emailController.text = widget.myProfileModel!.results!.profile!.email ?? "";
     _companyAddressController.text = widget.myProfileModel!.results!.profile!.address ?? "";
     _pinCodeController.text = widget.myProfileModel!.results!.profile!.pincode ?? "";
-    if (widget.myProfileModel!.results!.profile!.establishment_date != null) {
-      _dateOfBirthController.text = widget.myProfileModel!.results!.profile!.establishment_date ?? "";
+    if (widget.myProfileModel!.results!.profile!.establishment_date != null) { 
+      
+      _dateOfBirthController.text = widget.myProfileModel!.results!.profile!.establishment_date!= null? DateFormat('dd-MM-yyyy').format(DateTime.parse(widget.myProfileModel!.results!.profile!.establishment_date!)) : "";
     }
     country = widget.myProfileModel!.results!.profile!.country ?? "";
     state = widget.myProfileModel!.results!.profile!.state ?? "";

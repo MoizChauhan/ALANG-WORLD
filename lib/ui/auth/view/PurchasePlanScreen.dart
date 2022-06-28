@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:sb_portal/ui/dashboard/view/HomeNavigationScreen.dart';
 import 'package:sb_portal/ui/dashboard/view/HomeScreen.dart';
 import 'package:sb_portal/ui/dashboard/view/sales_admin/SellerAdminHomeNavigationScreen.dart';
 import 'package:sb_portal/utils/app_colors.dart';
@@ -11,7 +12,8 @@ import '../../../utils/NavKey.dart';
 import '../../dashboard/view/without_login/WithoutLoginNavigation.dart';
 
 class PurchasePlanScreen extends StatefulWidget {
-  const PurchasePlanScreen({Key? key}) : super(key: key);
+  final bool upgrade;
+  const PurchasePlanScreen({Key? key, required this.upgrade}) : super(key: key);
 
   @override
   _PurchasePlanScreenState createState() => _PurchasePlanScreenState();
@@ -88,7 +90,15 @@ class _PurchasePlanScreenState extends State<PurchasePlanScreen> {
               ),
               InkWell(
                 onTap: () {
-                  NavKey.navKey.currentState!.pushAndRemoveUntil(MaterialPageRoute(builder: (_) => HomeScreen()), (route) => false);
+                  widget.upgrade?
+                  NavKey.navKey.currentState!.pushAndRemoveUntil(MaterialPageRoute(
+                          builder: (_) => HomeScreenNavigation(
+                                selectedIndex: 0,
+                              )), (route) => false):
+                  NavKey.navKey.currentState!.pushAndRemoveUntil(MaterialPageRoute(
+                          builder: (_) => WithOutLoginNavigation(
+                                selectedIndex: 0,
+                              )), (route) => false);
                 },
                 child: const Text(
                   'BACK TO HOME',

@@ -4,6 +4,9 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:provider/provider.dart';
 import 'package:sb_portal/ui/auth/model/CommonModel.dart';
+import 'package:sb_portal/ui/auth/model/ListPlanModel.dart';
+import 'package:sb_portal/ui/auth/provider/AuthProvider.dart';
+import 'package:sb_portal/ui/auth/view/SelectPlanScreen.dart';
 import 'package:sb_portal/ui/dashboard/model/MyPlanModel.dart';
 import 'package:sb_portal/ui/dashboard/provider/HomeProvider.dart';
 import 'package:sb_portal/ui/dashboard/view/HomeNavigationScreen.dart';
@@ -24,18 +27,22 @@ class MyPlanScreen extends StatefulWidget {
 
 class _MyPlanScreenState extends State<MyPlanScreen> {
   HomeProvider? mHomeProvider;
+  AuthProvider? mAuthProvider;
   MyPlanModel myPlanModel = MyPlanModel();
   int page = 0;
+  bool showUpgrade= false;
 
   @override
   void initState() {
     callMyPlan();
+    
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     mHomeProvider = Provider.of<HomeProvider>(context);
+    mAuthProvider = Provider.of<AuthProvider>(context);
     return SafeArea(
       child: ModalProgressHUD(
         inAsyncCall: mHomeProvider!.isRequestSend,
@@ -360,6 +367,7 @@ class _MyPlanScreenState extends State<MyPlanScreen> {
                             ),
                             */
                             const SizedBox(height: 10),
+                            if(showUpgrade)
                             Align(
                               alignment: Alignment.center,
                               child: GestureDetector(
@@ -382,7 +390,8 @@ class _MyPlanScreenState extends State<MyPlanScreen> {
                                   ),
                                 ),
                                 onTap: () {
-                                  callMyPlan();
+                                  Navigator.push(context, MaterialPageRoute(builder: (_) =>  SelectPlanScreen(upgrade: true, currentPlanId: myPlanModel.results!.plan!.id!.toString(),)));
+                                  // callMyPlan();
                                 },
                               ),
                             ),
@@ -393,7 +402,37 @@ class _MyPlanScreenState extends State<MyPlanScreen> {
                     )
                   ],
                 )
-              : const SizedBox(),
+              :  Container(
+                child: Center(
+                  child: Align(
+                              alignment: Alignment.center,
+                              child: GestureDetector(
+                                child: Material(
+                                  elevation: 0.0,
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: AppColors.colorOrange,
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    height: 30,
+                                    width: 230,
+                                    child: MaterialButton(
+                                      onPressed: null,
+                                      child: Text(
+                                        'SELECT PLAN',
+                                        style: AppFont
+                                            .NUNITO_REGULAR_WHITE_BOLD_16,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                onTap: () {
+                                  Navigator.push(context, MaterialPageRoute(builder: (_) =>  const SelectPlanScreen(upgrade: true)));
+                                  // callMyPlan();
+                                },
+                              ),
+                            ),
+                ),
+              ),
           bottomNavigationBar: BottomNavigationBar(
             onTap: (_position) {
               NavKey.navKey.currentState!.pushAndRemoveUntil(
@@ -438,6 +477,35 @@ class _MyPlanScreenState extends State<MyPlanScreen> {
       ),
     );
   }
+  callPlanList() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.wifi) {
+      mAuthProvider!.planList(myPlanModel.results!.plan!.id!).then((value) {
+        if (value != null) {
+          try {
+            CommonModel streams = CommonModel.fromJson(value);
+            if (streams.response != null && streams.response == "error") {
+              Fluttertoast.showToast(msg: streams.message);
+            } else {
+              ListPlanModel listPlanModel = ListPlanModel.fromJson(value);
+              if(listPlanModel.results!.plans!.isNotEmpty){
+                setState(() {
+                  showUpgrade = true;
+                });
+              }
+            }
+          } catch (ex) {
+            print(ex);
+            Fluttertoast.showToast(msg: APPStrings.INTERNAL_SERVER_ISSUE);
+          }
+        } else {
+          Fluttertoast.showToast(msg: APPStrings.INTERNAL_SERVER_ISSUE);
+        }
+      });
+    } else {
+      Fluttertoast.showToast(msg: APPStrings.noInternetConnection);
+    }
+  }
 
   callMyPlan() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
@@ -451,6 +519,7 @@ class _MyPlanScreenState extends State<MyPlanScreen> {
               Fluttertoast.showToast(msg: streams.message);
             } else {
               myPlanModel = MyPlanModel.fromJson(value);
+              callPlanList();
             }
           } catch (ex) {
             print(ex);

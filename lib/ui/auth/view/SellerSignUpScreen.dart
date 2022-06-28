@@ -473,7 +473,9 @@ class _SellerSignUpScreenState extends State<SellerSignUpScreen> {
                                 TextSpan(
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
-                                      launchUrl(Uri.parse("https://alangworld.com/terms_and_conditions?type=seller"));
+                                      widget.isFromSeller!?
+                                      launchUrl(Uri.parse("https://alangworld.com/terms_and_conditions?type=seller")):
+                                      launchUrl(Uri.parse("https://alangworld.com/terms_and_conditions?type=buyer"));
                                     },
                                   text: 'Terms & Condition',
                                   style: TextStyle(
@@ -660,7 +662,7 @@ class _SellerSignUpScreenState extends State<SellerSignUpScreen> {
               if (widget.isFromSeller!) {
                 PreferenceHelper.setBool(PreferenceHelper.IS_SELLER_SIGN_IN, true);
                 PreferenceHelper.setString(PreferenceHelper.LOGIN_TYPE, 'seller');
-                NavKey.navKey.currentState!.pushAndRemoveUntil(MaterialPageRoute(builder: (_) => const SelectPlanScreen()), (route) => false);
+                NavKey.navKey.currentState!.pushAndRemoveUntil(MaterialPageRoute(builder: (_) => const SelectPlanScreen(upgrade: false)), (route) => false);
               } else {
                 PreferenceHelper.setBool(PreferenceHelper.IS_SELLER_SIGN_IN, false);
                 PreferenceHelper.setString(PreferenceHelper.LOGIN_TYPE, 'buyer');

@@ -15,7 +15,9 @@ import 'package:sb_portal/utils/app_images.dart';
 import 'package:sb_portal/utils/app_string.dart';
 
 class SelectPlanScreen extends StatefulWidget {
-  const SelectPlanScreen({Key? key}) : super(key: key);
+  final bool upgrade;
+  final String? currentPlanId;
+  const SelectPlanScreen({Key? key, required this.upgrade, this.currentPlanId}) : super(key: key);
 
   @override
   _SelectPlanScreenState createState() => _SelectPlanScreenState();
@@ -179,7 +181,7 @@ class _SelectPlanScreenState extends State<SelectPlanScreen> {
   callPlanList() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.wifi) {
-      mAuthProvider!.planList().then((value) {
+      mAuthProvider!.planList(widget.currentPlanId).then((value) {
         if (value != null) {
           try {
             CommonModel streams = CommonModel.fromJson(value);
@@ -215,7 +217,7 @@ class _SelectPlanScreenState extends State<SelectPlanScreen> {
             } else {
               SelectPlanModel selectPlanModel = SelectPlanModel.fromJson(value);
               Fluttertoast.showToast(msg: selectPlanModel.message!);
-              NavKey.navKey.currentState!.pushAndRemoveUntil(MaterialPageRoute(builder: (_) => const PurchasePlanScreen()), (route) => false);
+              NavKey.navKey.currentState!.pushAndRemoveUntil(MaterialPageRoute(builder: (_) =>  PurchasePlanScreen(upgrade: widget.upgrade,)), (route) => false);
             }
           } catch (ex) {
             print(ex);

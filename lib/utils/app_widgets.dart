@@ -129,6 +129,45 @@ class AppWidgets {
     );
   }
 
+  static buildInputFieldsWithDate(
+      TextEditingController _controller,
+      String name,
+      bool isPass,
+      FocusNode focusNode,
+      FocusNode? nextFocusNode,
+      BuildContext context,
+      {textInputAction = TextInputAction.done,
+      EdgeInsets scrollPadding = const EdgeInsets.only(bottom: 40.0),
+      bool isEnable = true,
+      TextStyle? textStyle}) {
+    return TextFormField(
+      controller: _controller,
+      textInputAction: textInputAction,
+      scrollPadding: scrollPadding,
+      style: AppFont.NUNITO_REGULAR_BLACK_14,
+      inputFormatters: [
+        
+      ],
+      keyboardType:
+          isPass ? TextInputType.visiblePassword : TextInputType.number,
+      obscureText: isPass,
+      enabled: isEnable,
+      maxLength: 6,
+      focusNode: focusNode,
+      onFieldSubmitted: (term) {
+        focusNode.unfocus();
+        FocusScope.of(context).requestFocus(nextFocusNode);
+      },
+      decoration: InputDecoration(
+          isDense: true,
+          hintText: name,
+          counterText: '',
+          hintStyle: AppFont.NUNITO_REGULAR_BLACK_14,
+          floatingLabelBehavior: FloatingLabelBehavior.never,
+          border: InputBorder.none),
+    );
+  }
+
   static buildInputFieldsForUrl(
       TextEditingController _controller,
       String name,
