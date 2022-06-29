@@ -8,6 +8,7 @@ import 'package:sb_portal/ui/auth/model/CommonModel.dart';
 import 'package:sb_portal/ui/auth/model/SignUpModel.dart';
 import 'package:sb_portal/ui/auth/provider/AuthProvider.dart';
 import 'package:sb_portal/ui/auth/view/SellerSignUpScreen.dart';
+import 'package:sb_portal/ui/auth/view/forgot_email_number_screen.dart';
 import 'package:sb_portal/ui/auth/view/forgot_password_screen.dart';
 import 'package:sb_portal/ui/auth/view/send_otp.dart';
 import 'package:sb_portal/ui/dashboard/view/HomeNavigationScreen.dart';
@@ -213,6 +214,17 @@ class _SellerLoginState extends State<SellerLogin> {
                         style: TextStyle(decoration: TextDecoration.underline),
                       ),
                     ),
+                    const SizedBox(height: 16),
+                    InkWell(
+                            child: Text(
+                              "Forgot Registered Email?",
+                              textAlign: TextAlign.end,
+                              style: AppFont.NUNITO_REGULAR_BLACK_18,
+                            ),
+                            onTap: () {
+                              NavKey.navKey.currentState!.push(MaterialPageRoute(builder: (_) =>   ForgotEmailNumberScreen(isFromSeller: widget.isFromSeller,)));
+                            },
+                          ),
                   ],
                 ),
               ),

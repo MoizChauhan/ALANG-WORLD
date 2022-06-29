@@ -8,9 +8,8 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 import 'package:sb_portal/ui/auth/model/CommonModel.dart';
 import 'package:sb_portal/ui/auth/provider/AuthProvider.dart';
-import 'package:sb_portal/ui/auth/view/SelectPlanScreen.dart';
 import 'package:sb_portal/ui/auth/view/SellerSignUpScreen.dart';
-import 'package:sb_portal/ui/dashboard/view/buyer/BuyerHomeScreenNavigation.dart';
+import 'package:sb_portal/ui/auth/view/forgot_update_email_screen.dart';
 import 'package:sb_portal/ui/dashboard/view/without_login/WithoutLoginNavigation.dart';
 import 'package:sb_portal/utils/NavKey.dart';
 import 'package:sb_portal/utils/app_colors.dart';
@@ -18,21 +17,30 @@ import 'package:sb_portal/utils/app_font.dart';
 import 'package:sb_portal/utils/app_images.dart';
 import 'package:sb_portal/utils/app_string.dart';
 
-class SellerOtpVerifyScreen extends StatefulWidget {
+class ForgotEmailOtpVerify extends StatefulWidget {
   bool? isFromSeller;
   final String otpSession;
   final String mobile;
 
-  SellerOtpVerifyScreen({Key? key, this.isFromSeller, required this.otpSession, required this.mobile}) : super(key: key);
+  final String userToken;
+
+  ForgotEmailOtpVerify(
+      {Key? key,
+      this.isFromSeller,
+      required this.otpSession,
+      required this.mobile,
+      required this.userToken})
+      : super(key: key);
 
   @override
-  _SellerOtpVerifyScreenState createState() => _SellerOtpVerifyScreenState();
+  _ForgotEmailOtpVerifyState createState() => _ForgotEmailOtpVerifyState();
 }
 
-class _SellerOtpVerifyScreenState extends State<SellerOtpVerifyScreen> {
+class _ForgotEmailOtpVerifyState extends State<ForgotEmailOtpVerify> {
   AuthProvider? mAuthProvider;
 
-  StreamController<ErrorAnimationType> errorController = StreamController<ErrorAnimationType>();
+  StreamController<ErrorAnimationType> errorController =
+      StreamController<ErrorAnimationType>();
 
   final TextEditingController _otpController = TextEditingController();
   String? smsOTP;
@@ -124,7 +132,8 @@ class _SellerOtpVerifyScreenState extends State<SellerOtpVerifyScreen> {
                   Form(
                     key: formKey,
                     child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 0),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 8.0, horizontal: 0),
                         child: PinCodeTextField(
                           appContext: context,
                           textStyle: const TextStyle(
@@ -154,7 +163,9 @@ class _SellerOtpVerifyScreenState extends State<SellerOtpVerifyScreen> {
                           errorAnimationController: errorController,
                           controller: _otpController,
                           keyboardType: TextInputType.number,
-                          inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
                           boxShadows: const [
                             BoxShadow(
                               color: Colors.black12,
@@ -180,9 +191,12 @@ class _SellerOtpVerifyScreenState extends State<SellerOtpVerifyScreen> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [Text(_timerStart, style: AppFont.NUNITO_REGULAR_BLACK_18)],
+                    children: [
+                      Text(_timerStart, style: AppFont.NUNITO_REGULAR_BLACK_18)
+                    ],
                   ),
-                  Text('(OTP Waiting Time)', style: AppFont.NUNITO_REGULAR_BLACK_14),
+                  Text('(OTP Waiting Time)',
+                      style: AppFont.NUNITO_REGULAR_BLACK_14),
                   const SizedBox(height: 40),
                   InkWell(
                     child: Material(
@@ -192,13 +206,23 @@ class _SellerOtpVerifyScreenState extends State<SellerOtpVerifyScreen> {
                       child: Container(
                         alignment: Alignment.center,
                         height: 40,
-                        child: MaterialButton(onPressed: null, child: Text('VERIFY NOW', style: AppFont.NUNITO_BOLD_WHITE_24)),
+                        child: MaterialButton(
+                            onPressed: null,
+                            child: Text('VERIFY NOW',
+                                style: AppFont.NUNITO_BOLD_WHITE_24)),
                       ),
                     ),
                     onTap: () {
+                      // NavKey.navKey.currentState!.push(MaterialPageRoute(
+                      //     builder: (_) => ForgotUpdateEmailScreen(
+                      //           isFromSeller: sellerLogin,
+                      //           userToken: widget.userToken,
+                      //         )));
+                      // ForgotUpdateEmailScreen
                       if (smsOTP == null || smsOTP!.length < 4) {
                         Fluttertoast.showToast(msg: 'Please enter otp');
-                      } else if (_otpController.text.toString().trim().length < 4) {
+                      } else if (_otpController.text.toString().trim().length <
+                          4) {
                         Fluttertoast.showToast(msg: 'Please enter valid otp');
                       } else {
                         callVerifyOtp();
@@ -235,11 +259,28 @@ class _SellerOtpVerifyScreenState extends State<SellerOtpVerifyScreen> {
                           style: TextStyle(
                             decoration: TextDecoration.underline,
                             fontFamily: 'NunitoSemiBold',
-                            color: isResend ? AppColors.colorBrown : AppColors.colorLightBrown,
+                            color: isResend
+                                ? AppColors.colorBrown
+                                : AppColors.colorLightBrown,
                           ),
                         ),
                       )
                     ],
+                  ),
+                  const SizedBox(height: 36),
+                  InkWell(
+                    onTap: () {
+                      NavKey.navKey.currentState!.pushAndRemoveUntil(
+                          MaterialPageRoute(
+                              builder: (_) => WithOutLoginNavigation(
+                                    selectedIndex: 0,
+                                  )),
+                          (route) => false);
+                    },
+                    child: const Text(
+                      'BACK TO HOME',
+                      style: TextStyle(decoration: TextDecoration.underline),
+                    ),
                   ),
                 ],
               ),
@@ -252,13 +293,14 @@ class _SellerOtpVerifyScreenState extends State<SellerOtpVerifyScreen> {
 
   callVerifyOtp() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.wifi) {
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
       Map<String, String> body = {
         APPStrings.paramOtp: smsOTP!,
         "session_id": widget.otpSession,
       };
 
-      mAuthProvider!.verifyOtp(body).then((value) {
+      mAuthProvider!.verifyOtpForgot(body).then((value) {
         if (value != null) {
           try {
             CommonModel streams = CommonModel.fromJson(value);
@@ -268,9 +310,9 @@ class _SellerOtpVerifyScreenState extends State<SellerOtpVerifyScreen> {
               CommonModel commonModel = CommonModel.fromJson(value);
               Fluttertoast.showToast(msg: "OTP Verified Successfully.");
               NavKey.navKey.currentState!.push(MaterialPageRoute(
-                  builder: (_) => SellerSignUpScreen(
+                  builder: (_) => ForgotUpdateEmailScreen(
                         isFromSeller: sellerLogin,
-                        mobileNumber: widget.mobile,
+                        userToken: widget.userToken,
                       )));
             }
           } catch (ex) {

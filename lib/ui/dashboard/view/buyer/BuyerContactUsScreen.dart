@@ -112,7 +112,7 @@ class _BuyerContactUsScreenState extends State<BuyerContactUsScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Text("© Copyright 2022 Alang World Use of this App signifies your acceptance of Alang World’s Terms of Use.",
-                  textAlign: TextAlign.center, style: AppFont.NUNITO_BOLD_BLACK_16),
+                  textAlign: TextAlign.center, style: AppFont.NUNITO_SEMI_BOLD_CHARCOAL_BLACK_14),
             ),
             const SizedBox(height: 64),
             //Text('Copyright Line/Web URL', style: AppFont.NUNITO_REGULAR_DARK_BLACK_16)

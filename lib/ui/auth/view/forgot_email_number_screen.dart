@@ -6,6 +6,9 @@ import 'package:provider/provider.dart';
 import 'package:sb_portal/ui/auth/provider/AuthProvider.dart';
 import 'package:sb_portal/ui/auth/view/SellerOtpVerifyScreen.dart';
 import 'package:sb_portal/ui/auth/view/SellerSignUpScreen.dart';
+import 'package:sb_portal/ui/auth/view/forgot_email_otp_verify.dart';
+import 'package:sb_portal/ui/dashboard/view/without_login/WithoutLoginNavigation.dart';
+import 'package:sb_portal/utils/NavKey.dart';
 import 'package:sb_portal/utils/app_images.dart';
 import 'package:sb_portal/utils/app_string.dart';
 import '../../../utils/app_colors.dart';
@@ -13,16 +16,17 @@ import '../../../utils/app_font.dart';
 
 String mobileNumber = "";
 
-class SendOtp extends StatefulWidget {
-  bool? isFromSeller;
+class ForgotEmailNumberScreen extends StatefulWidget {
+  final bool? isFromSeller;
 
-  SendOtp({this.isFromSeller});
+  const ForgotEmailNumberScreen({this.isFromSeller});
 
   @override
-  _SendOtpState createState() => _SendOtpState();
+  _ForgotEmailNumberScreenState createState() =>
+      _ForgotEmailNumberScreenState();
 }
 
-class _SendOtpState extends State<SendOtp> {
+class _ForgotEmailNumberScreenState extends State<ForgotEmailNumberScreen> {
   AuthProvider? mAuthProvider;
 
   final TextEditingController _mobileController = TextEditingController();
@@ -57,9 +61,10 @@ class _SendOtpState extends State<SendOtp> {
                 const SizedBox(height: 32),
                 Center(
                   child: Text(
-                    widget.isFromSeller!
-                        ? 'SELLER REGISTRATION'
-                        : 'BUYER REGISTRATION',
+                    // widget.isFromSeller!
+                    //     ? 'SELLER REGISTRATION'
+                    //     :
+                    'FORGOT EMAIL',
                     textAlign: TextAlign.center,
                     style: AppFont.NUNITO_SEMI_BOLD_BLACK_24,
                   ),
@@ -71,7 +76,7 @@ class _SendOtpState extends State<SendOtp> {
                 ),*/
                 const SizedBox(height: 24),
                 Text(
-                  "Enter Mobile Number Here for \n Start Your Registration",
+                  "Enter Your Registered Mobile Number",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -168,8 +173,34 @@ class _SendOtpState extends State<SendOtp> {
                     ),
                   ),
                   onTap: _callSendOtp,
+                  // onTap: () {
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //     builder: (_) => ForgotEmailOtpVerify(
+                    //           otpSession: "",
+                    //           mobile: _mobileController.text,
+                    //           userToken: '',
+                    //         )));
+                  //   setState(() {
+                  //     mobileNumber = _mobileController.text;
+                  //   });
+                  //   setState(() {});
+                  // },
                 ),
                 const SizedBox(height: 32),
+                InkWell(
+                  onTap: () {
+                    NavKey.navKey.currentState!.pushAndRemoveUntil(
+                        MaterialPageRoute(
+                            builder: (_) => WithOutLoginNavigation(
+                                  selectedIndex: 0,
+                                )),
+                        (route) => false);
+                  },
+                  child: const Text(
+                    'BACK TO HOME',
+                    style: TextStyle(decoration: TextDecoration.underline),
+                  ),
+                ),
               ],
             ),
           ),
@@ -189,16 +220,22 @@ class _SendOtpState extends State<SendOtp> {
           APPStrings.paramMobile: _mobileController.text,
         };
 
-        mAuthProvider!.sendOtp(body).then((value) {
+        mAuthProvider!.sendOtpForgot(body).then((value) {
           print(value);
           if (value != null) {
             try {
               if (value["response"] != null && value["response"] == "success") {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => SellerOtpVerifyScreen(
-                          otpSession: value["results"]["OTPSession"],
-                          mobile: _mobileController.text,
-                        )));
+                // Navigator.of(context).push(MaterialPageRoute(
+                //     builder: (_) => SellerOtpVerifyScreen(
+                //           otpSession: value["results"]["OTPSession"],
+                //           mobile: _mobileController.text,
+                //         )));
+                        Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) => ForgotEmailOtpVerify(
+                              otpSession: value["results"]["OTPSession"],
+                              mobile: _mobileController.text,
+                              userToken: value["results"]["user_token"],
+                            )));
                 setState(() {
                   mobileNumber = _mobileController.text;
                 });

@@ -45,6 +45,38 @@ class AuthProvider extends ChangeNotifier {
       throw e;
     });
   }
+  Future<Map<String, dynamic>> sendOtpForgot(Map<String, dynamic> params) {
+    isRequestSend = true;
+    notifyListeners();
+    return api
+        .callPostMethod(mContext!, APPStrings.sendOtpForgot, params)
+        .then((value) {
+      isRequestSend = false;
+      notifyListeners();
+      Map<String, dynamic> data = jsonDecode(value);
+      return data;
+    }).catchError((e) {
+      isRequestSend = false;
+      notifyListeners();
+      throw e;
+    });
+  }
+  Future<Map<String, dynamic>> updateEmailAddress(Map<String, dynamic> params) {
+    isRequestSend = true;
+    notifyListeners();
+    return api
+        .callPostMethod(mContext!, APPStrings.updateEmailAddress, params)
+        .then((value) {
+      isRequestSend = false;
+      notifyListeners();
+      Map<String, dynamic> data = jsonDecode(value);
+      return data;
+    }).catchError((e) {
+      isRequestSend = false;
+      notifyListeners();
+      throw e;
+    });
+  }
 
   Future<Map<String, dynamic>> forgotPassword(Map<String, dynamic> params) {
     isRequestSend = true;
@@ -64,6 +96,22 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future<Map<String, dynamic>> verifyOtp(Map<String, dynamic> params) {
+    isRequestSend = true;
+    notifyListeners();
+    return api
+        .callPostMethodWithToken(mContext!, APPStrings.apiVerifyOtp, params)
+        .then((value) {
+      isRequestSend = false;
+      notifyListeners();
+      Map<String, dynamic> data = jsonDecode(value);
+      return data;
+    }).catchError((e) {
+      isRequestSend = false;
+      notifyListeners();
+      throw e;
+    });
+  }
+  Future<Map<String, dynamic>> verifyOtpForgot(Map<String, dynamic> params) {
     isRequestSend = true;
     notifyListeners();
     return api

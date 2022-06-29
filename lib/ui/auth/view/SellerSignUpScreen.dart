@@ -548,7 +548,7 @@ class _SellerSignUpScreenState extends State<SellerSignUpScreen> {
     } else if (mobileNumber.toString().trim().isEmpty) {
       Fluttertoast.showToast(msg: 'Please enter mobile number');
     } else if (mobileNumber.toString().length < 10) {
-      Fluttertoast.showToast(msg: 'Please enter valid mobile number');
+      Fluttertoast.showToast(msg: 'Mobile Number must contain 10 digit');
     } else if (_emailController.text.toString().trim().isEmpty) {
       Fluttertoast.showToast(msg: 'Please enter email');
     } else if (!EmailValidator.validate(_emailController.text.toString().trim())) {

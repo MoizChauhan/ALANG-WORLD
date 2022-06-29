@@ -9,6 +9,8 @@ class APPStrings {
   static const String apiRegister = 'register';
   static const String apiVerifyOtp = 'verify-otp';
   static const String sendOtp = "send_otp";
+  static const String sendOtpForgot = "send_otp_forgot";
+  static const String updateEmailAddress = "update_email";
   static const String apiLogin = 'login';
   static const String apiGetPlan = 'get_plan';
   static const String forgotPassword = "forgote_password";
@@ -33,6 +35,8 @@ class APPStrings {
   //PARAM data
   static const String paramName = 'name';
   static const String paramEmail = 'email';
+  static const String paramValue = 'value';
+  static const String paramUserToken = 'token';
   static const String paramType = 'type';
   static const String paramFirebaseId = 'firebase_id';
   static const String paramPassword = 'password';
